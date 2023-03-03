@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error!</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        main{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.75;
+            flex-direction: column;
+        }
+        #notfound p {
+            color: red;
+        }
+        #info{
+            display: flex;
+        }
+        #info p {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section id="notfound">
+            <p>The file is not found</p>
+        </section>
+        <section id="info">
+            <p>
+                <strong>Ali Khaled</strong>
+            </p>
+            <p>
+                <strong>1215263</strong>
+            </p>
+        </section>
+        <section id="ip">
+            <p>Your IP is : <span></span></p>
+        </section>
+        <section id="port">
+            <p>Your Port is <span></span></p>
+        </section>
+        <a href="/">Go Back</a>
+    </main>
+    <script>
+        let ip = document.querySelector("#ip span");
+        let port = document.querySelector("#port span");
+        fetch("http://api.ipify.org/?format=json").then(res=>res.json()).then(res=>{
+            ip.textContent = res.ip;
+        });
+        port.textContent = location.port;
+    </script>
+</body>
+</html>
